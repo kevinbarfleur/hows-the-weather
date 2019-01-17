@@ -1,32 +1,274 @@
+@import url('https://fonts.googleapis.com/css?family=Thasadith');
+
+body {
+  font-family: 'Thasadith', sans-serif;
+}
+* {
+  margin: 0;
+  padding: 0;
+}
+.Page {
+  width: 100vw;
+  height: 100vh;
+  background: #feac5e; /* fallback for old browsers */
+  background: -webkit-linear-gradient(
+    to right,
+    #4bc0c8,
+    #c779d0,
+    #feac5e
+  ); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(
+    to right,
+    #4bc0c8,
+    #c779d0,
+    #feac5e
+  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+  display: grid;
+  justify-content: center;
+  overflow: hidden;
+}
 .App {
+  align-self: center;
+  width: 350px;
+  height: 550px;
+  border-radius: 10px;
+  background: url('./img/texture.png');
+  position: relative;
+  overflow: hidden;
+  box-shadow: 50px 50px 1000px rgba(0, 0, 0, 0.7);
+}
+.App .currentLocation-container {
+  background-color: rgba(255, 255, 255, 0.5);
+  opacity: 0;
+  transition: all 3.6s;
+  border-radius: 10px;
+  box-shadow: 50px 50px 1000px rgba(0, 0, 0, 0.2);
+  margin: 50% auto;
+  margin-left: 20%;
+  margin-right: 20%;
+  padding-top: 10%;
+  padding-bottom: 10%;
+}
+.App .currentLocation-container .currentLocation {
+  font-family: 'Thasadith', sans-serif;
+  font-size: 1.5em;
+  text-align: center;
+  padding-bottom: 10px;
+}
+.App .currentLocation-container .temp {
+  font-family: 'Thasadith', sans-serif;
+  text-align: center;
+  font-size: 2em;
+  font-weight: 300;
+  margin-top: 0%;
+}
+.App .spinner {
+  margin: 70% auto;
+}
+.App .weatherIcon {
+  /* color: black; */
+  background: #feac5e; /* fallback for old browsers */
+  background: -webkit-linear-gradient(
+    to right,
+    #4bc0c8,
+    #c779d0,
+    #feac5e
+  ); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(
+    to right,
+    #4bc0c8,
+    #c779d0,
+    #feac5e
+  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  width: 100%;
+  padding: 10% 0px 10% 0px;
+  transform: scale(0.5);
+  transition: all 2.6s;
+  text-align: center;
+
+  animation: iconAnimation;
+  animation-duration: 10s;
+  animation-delay: 100ms;
+  animation-iteration-count: infinite;
+}
+.title {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  display: flex;
+  height: 25px;
+
+  background-color: rgba(255, 255, 255, 0.2);
+  padding: 10px;
+  border-radius: 50px;
+
+  align-self: center;
   text-align: center;
 }
 
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 40vmin;
+.title img {
+  width: 25px;
+  height: 25px;
+  margin: auto;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+.title h1 {
+  font-size: 1em;
+  margin: auto;
+  margin-left: 10px;
+  color: rgba(0, 0, 0, 0.8);
 }
 
-.App-link {
-  color: #61dafb;
+.App .menu {
+  z-index: 1;
+  padding-top: 50px;
+  text-align: center;
+  width: 40%;
+  height: 100%;
+  background: white;
+  box-shadow: -1px 0px 1000px rgba(0, 0, 0, 0.2);
+  position: absolute;
+  top: 0px;
+  right: -40%;
+  opacity: 0;
+  transition: all 0.3s;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+.App .menu .item {
+  color: black;
+  font-size: 0.8em;
+  padding: 15px 0px 15px 0px;
+  margin: 10px 10px 0px 10px;
+  border-radius: 5px;
+  box-shadow: 0px 0px 0px rgba(0, 0, 0, 0.2);
+  transition: 0.4s;
+}
+.App .menu .item:hover {
+  cursor: pointer;
+  /* background-color: #ff9a96; */
+  box-shadow: 1px 6px 15px rgba(0, 0, 0, 0.15);
+  transform: translateX(1px) translateY(-1px);
+  /* margin: 15px 10px 0px 15px; */
+  transition: 0.4s;
+}
+.App .menu.active {
+  right: 0%;
+  opacity: 1;
+  transition: all 0.3s;
+}
+.App .menu .item-input {
+  margin-top: 70%;
+}
+.App .menu .item-input input {
+  border: none;
+  width: 100%;
+  height: 45px;
+  text-align: center;
+  background-color: #f2f2f2;
+  outline: none;
+}
+.menu-item {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  width: 30px;
+  height: 2px;
+  background-color: rgba(0, 0, 0, 0.9);
+  border: none solid none;
+  border-radius: 20px;
+  transition: all 0.3s;
+}
+.menu-item::before {
+  content: '';
+  width: 30px;
+  height: 2px;
+  position: absolute;
+  top: 8px;
+  background-color: rgba(0, 0, 0, 0.9);
+  border: none solid none;
+  border-radius: 20px;
+  transition: all 0.3s;
+}
+.menu-item::after {
+  content: '';
+  width: 30px;
+  height: 2px;
+  position: absolute;
+  top: 16px;
+  background-color: rgba(0, 0, 0, 0.9);
+  border: none solid none;
+  border-radius: 20px;
+  transition: all 0.3s;
+}
+.menu-container {
+  position: absolute;
+  right: 25px;
+  top: 25px;
+  width: 40px;
+  height: 40px;
+  transition: all 0.3s;
+  border-color: black;
+  border-radius: 100%;
+  padding: 10px 10px 10px 10px;
+}
+.menu-container:hover {
+  cursor: pointer;
+}
+.menu-container.active {
+  outline: none;
+  padding: 5px 5px 5px 5px;
+  transition: all 0.3s;
+  border-radius: 100%;
+  background-color: #fff;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  opacity: 1;
+  transform: translateX(-90px) translateY(-10px);
+  z-index: 999;
+  overflow: hidden;
+}
+.menu-container.active .menu-item {
+  opacity: 1;
+  width: 30px;
+  transition: all 0.3s;
+  transform-origin: left;
+  transform: translateX(0px) translateY(7px) rotate(45deg);
+  background-color: rgba(0, 0, 0, 0.7);
+}
+.menu-container.active .menu-item::before {
+  transition: all 0.3s;
+  opacity: 0;
+  background-color: rgba(0, 0, 0, 0.7);
+}
+.menu-container.active .menu-item::after {
+  transition: all 0.3s;
+  width: 30px;
+  opacity: 1;
+  transform: rotate(-270deg) translateX(-15px) translateY(0px);
+  background-color: rgba(0, 0, 0, 0.7);
+}
+
+.footer {
+  position: absolute;
+  bottom: 10px;
+  width: 100vw;
+  text-align: right;
+}
+
+.footer p {
+  margin-right: 15px;
+}
+
+@keyframes iconAnimation {
+  0% {
+    transform: scale(1);
   }
-  to {
-    transform: rotate(360deg);
+  50% {
+    transform: scale(0.8);
+  }
+  100% {
+    transform: scale(1);
   }
 }
