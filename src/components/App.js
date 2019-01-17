@@ -76,7 +76,6 @@ class App extends Component {
   }
 
   showLocation = location => {
-    console.log(location)
     const currentLocation = location
     this.setState({ charged: false })
     this.setState({ currentLocation: currentLocation })
