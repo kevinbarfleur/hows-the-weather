@@ -121,7 +121,7 @@ class App extends Component {
       () => {
         setTimeout(() => {
           timeContainer.style.opacity = '1'
-        }, 100)
+        }, 700)
       }
     )
   }
