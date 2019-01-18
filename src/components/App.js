@@ -27,18 +27,22 @@ class App extends Component {
     }
   }
 
-  /*componentWillMount() {
-    if ('geolocation' in navigator)
-      navigator.geolocation.getCurrentPosition(
-        this.succesGeolocation.bind(this)
-      )
-    else
-      alert(
-        "Le service de géolocalisation n'est pas disponible sur votre ordinateur."
-      )
-  }*/
+  // componentWillMount() {
+  //   if ('geolocation' in navigator)
+  //     navigator.geolocation.getCurrentPosition(
+  //       this.succesGeolocation.bind(this)
+  //     )
+  //   else
+  //     alert(
+  //       "Le service de géolocalisation n'est pas disponible sur votre ordinateur."
+  //     )
+  // }
 
-  succesGeolocation() {
+  componentWillMount() {
+    this.succesGeolocation()
+  }
+
+  succesGeolocation = () => {
     const currentLocationWeather = `https://api.openweathermap.org/data/2.5/weather?lat=${
       this.state.currentLocation[1]
     }&lon=${
@@ -61,7 +65,6 @@ class App extends Component {
           () => {
             this.setState({ charged: true }, () => {
               this.setWeatherIcon()
-              console.log(response)
             })
           }
         )
@@ -79,11 +82,8 @@ class App extends Component {
     const currentLocation = location
     this.setState({ charged: false })
     this.setState({ currentLocation: currentLocation })
-    //this.showWeather()
+    this.showWeather()
     this.showMenu()
-
-    const timeContainer = this.refs.timeContainer
-    timeContainer.style.opacity = '0'
   }
 
   showWeather() {
