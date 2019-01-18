@@ -27,7 +27,7 @@ class App extends Component {
     }
   }
 
-  componentWillMount() {
+  /*componentWillMount() {
     if ('geolocation' in navigator)
       navigator.geolocation.getCurrentPosition(
         this.succesGeolocation.bind(this)
@@ -36,7 +36,7 @@ class App extends Component {
       alert(
         "Le service de géolocalisation n'est pas disponible sur votre ordinateur."
       )
-  }
+  }*/
 
   succesGeolocation() {
     const currentLocationWeather = `https://api.openweathermap.org/data/2.5/weather?lat=${
@@ -79,7 +79,7 @@ class App extends Component {
     const currentLocation = location
     this.setState({ charged: false })
     this.setState({ currentLocation: currentLocation })
-    this.showWeather()
+    //this.showWeather()
     this.showMenu()
 
     const timeContainer = this.refs.timeContainer
