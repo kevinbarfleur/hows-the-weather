@@ -139,7 +139,7 @@ class App extends Component {
       <div className="currentLocation-container" ref="timeContainer">
         <h3 className="currentLocation">{this.state.currentLocation[0]}</h3>
         <WeatherIcons className="weatherIcon" name={icon} size="4x" />
-        <h2 className="temp">{this.state.currentLocation[3]}°C</h2>
+        <h2 className="temp">{Math.round(this.state.currentLocation[3])}°C</h2>
       </div>
     )
 
