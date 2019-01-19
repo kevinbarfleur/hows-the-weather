@@ -87,7 +87,8 @@ class App extends Component {
   }
 
   showWeather() {
-    navigator.geolocation.getCurrentPosition(this.succesGeolocation.bind(this))
+    // navigator.geolocation.getCurrentPosition(this.succesGeolocation.bind(this))
+    this.succesGeolocation()
   }
 
   setWeatherIcon() {
