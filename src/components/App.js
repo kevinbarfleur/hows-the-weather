@@ -64,7 +64,8 @@ class App extends Component {
           },
           () => {
             this.setState({ charged: true }, () => {
-              this.setWeatherIcon()
+              //console.log(response)
+              this.setWeatherIcon(response)
             })
           }
         )
@@ -79,11 +80,11 @@ class App extends Component {
   }
 
   showLocation = location => {
-    const currentLocation = location
     this.setState({ charged: false })
-    this.setState({ currentLocation: currentLocation })
-    this.showWeather()
-    this.showMenu()
+    this.setState({ currentLocation: [...location] }, () => {
+      this.showWeather()
+      this.showMenu()
+    })
   }
 
   showWeather() {
@@ -91,7 +92,7 @@ class App extends Component {
     this.succesGeolocation()
   }
 
-  setWeatherIcon() {
+  setWeatherIcon = data => {
     const timeContainer = this.refs.timeContainer
     const today = new Date()
     const hour = today.getHours()
@@ -121,6 +122,7 @@ class App extends Component {
       },
       () => {
         setTimeout(() => {
+          // console.log(data)
           timeContainer.style.opacity = '1'
         }, 700)
       }
