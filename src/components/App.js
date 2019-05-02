@@ -176,7 +176,11 @@ class App extends Component {
         </div>
         <div className="footer">
           <p>
-            howstheweather - <b>Kévin Barfleur</b> - 2019
+            howstheweather -{' '}
+            <b>
+              <a href="https://kevinbarfleur.com/">Kévin Barfleur</a>
+            </b>{' '}
+            - 2019
           </p>
         </div>
       </div>
